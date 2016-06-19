@@ -11,6 +11,9 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'devise'
 
+
+gem 'thin'
+
 group :development, :test do
 
   gem 'better_errors'
@@ -20,7 +23,5 @@ group :development, :test do
 end
 
 group :production do
-
-  gem 'unicorn'
 
 end

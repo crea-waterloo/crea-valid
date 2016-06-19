@@ -1,0 +1,32 @@
+<div class="entry">
+  <p class="entry details">
+    (<a href="<%= relation.link[0..42] %>" target="_blank">link</a>)
+    <strong>S:</strong><span class="entry subject"><%= relation.subject %></span>
+    <strong>P:</strong><span class="entry predicate"><%= relation.predicate %></span>
+    <strong>O:</strong><span class="entry object"><%= relation.object %></span>
+  </p>
+  <% if defined? edit and edit %>
+    <%= form_for(@ratings.find_by(relation: relation) ||
+                 relation.relation_ratings.new, {remote: true}) do |f| %>
+    <p class="entry response">
+      <%= f.hidden_field :relation_id %>
+      <%= f.radio_button :value, 1 %>
+      <%= f.label :value, 1 %>
+      <%= f.radio_button :value, 2 %>
+      <%= f.label :value, 2 %>
+      <%= f.radio_button :value, 3 %>
+      <%= f.label :value, 3 %>
+      <%= f.radio_button :value, 4 %>
+      <%= f.label :value, 4 %>
+      <%= f.radio_button :value, 5 %>
+      <%= f.label :value, 5 %>
+    </p>
+    <p class="entry comment">
+      <%= f.text_area :comment %>
+    </p>
+
+    <%= f.submit %>
+    <% end %>
+  <% end %>
+</div>
+<hr>
